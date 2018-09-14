@@ -31,6 +31,9 @@ ALLOWED_HOSTS = [
     'fi.ee.tsinghua.edu.cn',
 ]
 
+if DEBUG:
+    ALLOWED_HOSTS.append('localhost')
+
 
 # Application definition
 
@@ -80,14 +83,22 @@ WSGI_APPLICATION = 'SimMgn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, 'client')
-        },
+if DEBUG:
+    DATABASES = {
+        "default": {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'OPTIONS': {
+                'read_default_file': os.path.join(BASE_DIR, 'client')
+            },
+        }
+    }
 
 
 # Password validation

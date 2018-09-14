@@ -29,6 +29,12 @@ class Seminar(models.Model):
     seminar_time = models.DateField()
     title = models.CharField(max_length=256)
     description = models.TextField(null=True, blank=True)
+    public = models.BooleanField(default=False)
+
+    class Meta:
+        permissions = (
+            ('download_private_file', "Can download private files."),
+        )
 
 
 class SeminarFile(models.Model):

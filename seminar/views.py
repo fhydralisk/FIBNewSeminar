@@ -9,9 +9,11 @@ from operator import itemgetter
 
 from django.shortcuts import render
 from django.http.response import FileResponse, HttpResponseNotFound
+from django.contrib.auth import authenticate, login, logout
 
 from .models import SeminarFile, SeminarGroup, Seminar
 from .model_choices.season_choice import season_choice
+
 
 # Create your views here.
 
@@ -21,8 +23,14 @@ def get_file_view(request):
     if id is None:
         return HttpResponseNotFound()
 
+    # determine whether user has permission to download private file:
+    perm_private = request.user.has_perm('seminar.download_private_file') if request.user is not None else False
+
     try:
         s_file = SeminarFile.objects.get(id=id)
+        if not s_file.seminar.public and not perm_private:
+            return HttpResponseNotFound()
+
         s_file.download_count += 1
         s_file.save()
     except SeminarFile.DoesNotExist:
@@ -36,6 +44,26 @@ def get_file_view(request):
 
 
 def seminar_view(request, group=None):
+
+    login_result = {}
+
+    if request.method == 'POST':
+        action = request.POST["action"]
+        if action == 'login':
+            username = request.POST["username"]
+            password = request.POST["password"]
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                login_result["succeed"] = True
+            else:
+                login_result["succeed"] = False
+
+        if action == 'logout':
+            logout(request)
+
     seminar_groups = SeminarGroup.objects.order_by('-start_date').all()
     this_seminar_group = None
     try:
@@ -43,6 +71,9 @@ def seminar_view(request, group=None):
         seminars = this_seminar_group.seminars.prefetch_related('seminar_file').select_related("uploader").all()
     except (Seminar.DoesNotExist, SeminarGroup.DoesNotExist):
         seminars = []
+
+    # determine whether user has permission to download private file:
+    perm_private = request.user.has_perm('seminar.download_private_file') if request.user is not None else False
 
     seminar_list = [
         {
@@ -56,7 +87,7 @@ def seminar_view(request, group=None):
                     "filename": fid.filename,
                 }
                 for fid in seminar.seminar_file.all()
-            ]
+            ] if seminar.public or perm_private else []
         }
         for seminar in seminars
     ]
@@ -82,6 +113,7 @@ def seminar_view(request, group=None):
             "season": season_choice.get_verbose_name(this_seminar_group.season),
         } if this_seminar_group is not None else None,
         "seminars": grouped_seminar_list,
+        "login_result": login_result,
     }
 
     return render(request, 'seminar.htm', seminar_dict)

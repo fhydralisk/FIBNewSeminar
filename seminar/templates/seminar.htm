@@ -168,7 +168,25 @@
 </header>
 <section id="inner-headline">
     <div class="container">
-        <div class="row">
+        <div class="row" align="right">
+                <form method="post">
+                {% csrf_token %}
+                {% if not user.is_authenticated %}
+
+                    <input type="text" name="username" />
+                    <input type="password" name="password" />
+                    <input type="hidden" name="action" value="login" />
+                    <input type="submit" value="Login" />
+
+                {% else %}
+
+                    <input type="hidden" name="action" value="logout" />
+                    <input type="submit" value="Logout" />
+
+                {% endif %}
+
+                </form>
+
         </div>
     </div>
 </section>
@@ -227,6 +245,7 @@
     <!-- \#header -->
     {% if this_seminar_group is not None %}
     <div id="main" class=" aui-page-panel" style="margin-left: 285px;">
+
         <div id="main-header" style="width: 915px;">
             <div id="title-heading" class="pagetitle with-breadcrumbs">
                 <div id="breadcrumb-section"></div>
