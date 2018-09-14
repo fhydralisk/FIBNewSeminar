@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from django.forms.models import ModelForm
 from django.forms.models import BaseModelFormSet
 from .models import Seminar, SeminarFile, SeminarGroup
 from .model_choices.season_choice import season_choice
@@ -32,6 +31,7 @@ class SeminarModelAdmin(admin.ModelAdmin):
     inlines = (SeminarFileInline, )
 
     fields = ('title', 'author', 'description', 'seminar_time', 'seminar_group')
+    list_filter = ('seminar_group', 'uploader', 'author')
 
     def save_model(self, request, obj, form, change):
         # type: (object, Seminar, object, object) -> object
@@ -83,5 +83,7 @@ class SeminarModelAdmin(admin.ModelAdmin):
             return formset.save()
 
 
+admin.site.site_header = u'Seminar Background'
+admin.site.site_title = u'Seminar Background'
 admin.site.register(Seminar, SeminarModelAdmin)
 admin.site.register([SeminarGroup, ])
