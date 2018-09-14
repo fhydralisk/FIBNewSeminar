@@ -124,7 +124,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/seminar/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = 'collected_static'
 
 # Upload location
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -134,5 +136,3 @@ SEMINAR_UPLOAD_PATH = 'upload/seminar_file/%Y/%m/%d/'
 
 # File Storage
 DEFAULT_FILE_STORAGE = 'seminar.storage.UUIDFileStorage'
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
