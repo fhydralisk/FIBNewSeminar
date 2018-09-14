@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.forms.models import ModelForm
+from django.forms.models import BaseModelFormSet
 from .models import Seminar, SeminarFile, SeminarGroup
 from .model_choices.season_choice import season_choice
 import calendar
@@ -20,6 +22,7 @@ def get_last_day_of_month(year, month):
 class SeminarFileInline(admin.TabularInline):
     model = SeminarFile
     extra = 1
+    fields = ('path', )
 
 
 class SeminarModelAdmin(admin.ModelAdmin):
@@ -66,6 +69,18 @@ class SeminarModelAdmin(admin.ModelAdmin):
 
             obj.seminar_group = sg
         return super(SeminarModelAdmin, self).save_model(request, obj, form, change)
+    
+    def save_formset(self, request, form, formset, change):
+        # type: (object, object, BaseModelFormSet, object) -> object
+        if formset.model == SeminarFile:
+            instances = formset.save(commit=False)
+
+            for instance in instances:
+                instance.filename = instance.path.file.name
+                instance.save()
+            return instances
+        else:
+            return formset.save()
 
 
 admin.site.register(Seminar, SeminarModelAdmin)

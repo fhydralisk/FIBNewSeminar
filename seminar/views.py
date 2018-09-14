@@ -29,7 +29,7 @@ def get_file_view(request):
     else:
         response = FileResponse(open(s_file.path.path), content_type='application/octet-stream')
         response['Content-Disposition'] = 'attachment;filename="{filename}"'.format(
-            filename=os.path.split(s_file.path.path)[1]
+            filename=s_file.filename
         )
         return response
 
@@ -49,8 +49,12 @@ def seminar_view(request, group=None):
             "title": seminar.title,
             "author": seminar.author,
             "uploader": seminar.uploader.username,
-            "file_ids": [
-                fid.id for fid in seminar.seminar_file.all()
+            "files": [
+                {
+                    "id": fid.id,
+                    "filename": fid.filename,
+                }
+                for fid in seminar.seminar_file.all()
             ]
         }
         for seminar in seminars

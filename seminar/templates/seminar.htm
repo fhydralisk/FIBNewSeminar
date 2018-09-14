@@ -255,8 +255,8 @@
                                 <h2>{{ seminar.title }}</h2></td>
                             <td class="confluenceTd">
                                 <h2>
-                                    {% for file in seminar.file_ids %}
-                                    <a href="{% url 'seminar_file' %}?id={{ file }}" target="_blank">{{ file }}</a>
+                                    {% for file in seminar.files %}
+                                    <a href="{% url 'seminar_file' %}?id={{ file.id }}" target="_blank">{{ file.filename }}</a><br>
                                     {% endfor %}
                                 </h2></td>
                         </tr>

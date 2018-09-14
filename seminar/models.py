@@ -36,3 +36,4 @@ class SeminarFile(models.Model):
     upload_time = models.DateTimeField(auto_now_add=True)
     path = models.FileField(upload_to=settings.SEMINAR_UPLOAD_PATH)
     download_count = models.IntegerField(default=0)
+    filename = models.CharField(max_length=512, default="unknown")
