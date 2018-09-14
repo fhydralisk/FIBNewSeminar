@@ -8,7 +8,7 @@ from itertools import groupby
 from operator import itemgetter
 
 from django.shortcuts import render
-from django.http.response import FileResponse, HttpResponseNotFound
+from django.http.response import FileResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 
 from .models import SeminarFile, SeminarGroup, Seminar
@@ -63,6 +63,8 @@ def seminar_view(request, group=None):
 
         if action == 'logout':
             logout(request)
+
+        return HttpResponseRedirect(request.path)
 
     seminar_groups = SeminarGroup.objects.order_by('-start_date').all()
     this_seminar_group = None
