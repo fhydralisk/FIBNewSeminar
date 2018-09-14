@@ -25,7 +25,11 @@ SECRET_KEY = '9pt!9si&0#=0tur-nch9%p4k8c3q1ju!_b+#u+ar6c8@ni$-_p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'fib-lab.com',
+    'www.fib-lab.com',
+    'fi.ee.tsinghua.edu.cn',
+]
 
 
 # Application definition
