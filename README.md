@@ -11,7 +11,12 @@ Python3 is not supported
 
 ## Installation
 
-### Install Django >= 1.11.0
+Install Django >= 1.11.0
+
+```bash
+$ git clone https://github.com/fhydralisk/FIBNewSeminar.git
+$ cd FIBNewSeminar
+```
 
 ### Initialize database
 
