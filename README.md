@@ -11,7 +11,13 @@ Python3 is not supported
 
 ## Installation
 
-Install Django >= 1.11.0
+### Install Django >= 1.11.0
+
+```bash
+$ pip install "django>=1.11.0,<2.0"
+```
+
+### Download FIBNewSeminar
 
 ```bash
 $ git clone https://github.com/fhydralisk/FIBNewSeminar.git

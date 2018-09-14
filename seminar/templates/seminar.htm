@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>2018-2019 Autumn FIB-LAB Group Seminar Schedule</title>
+    <title>{% if this_seminar_group is not None %}{{ this_seminar_group.start_year }}-{{ this_seminar_group.end_year }} {{ this_seminar_group.season }} {% endif %} FIB-LAB Group Seminar Schedule</title>
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=IE7">
     <meta id="confluence-context-path" name="confluence-context-path" content="/wiki">
     <meta id="atlassian-token" name="atlassian-token" content="7d56b8cf6d8e1487fbdd855eeef69c451166fd6b">
