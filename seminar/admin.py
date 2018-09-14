@@ -79,6 +79,11 @@ class SeminarModelAdmin(admin.ModelAdmin):
             for instance in instances:
                 instance.filename = instance.path.file.name
                 instance.save()
+
+            # delete instances that are not deleted.
+            for instance in formset.deleted_objects:
+                instance.delete()
+
             return instances
         else:
             return formset.save()
