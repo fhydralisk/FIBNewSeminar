@@ -25,12 +25,13 @@ class SeminarFileInline(admin.TabularInline):
 
 
 class SeminarModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'author', 'uploader', 'upload_time')
+    list_display = ('id', 'title', 'author', 'uploader', 'upload_time', 'public')
+    list_editable = ('public', )
     list_display_links = ('id', 'title')
     ordering = ('-upload_time', )
     inlines = (SeminarFileInline, )
 
-    fields = ('title', 'author', 'description', 'seminar_time', 'seminar_group')
+    fields = ('title', 'author', 'description', 'seminar_time', 'seminar_group', 'public')
     list_filter = ('seminar_group', 'uploader', 'author')
 
     def save_model(self, request, obj, form, change):
