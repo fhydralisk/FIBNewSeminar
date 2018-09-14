@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+{% load staticfiles %}
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{% if this_seminar_group is not None %}{{ this_seminar_group.start_year }}-{{ this_seminar_group.end_year }} {{ this_seminar_group.season }} {% endif %} FIB-LAB Group Seminar Schedule</title>
@@ -54,35 +54,35 @@
     <meta name="ajs-user-date-pattern" content="yyyy-M-d">
     <meta name="ajs-date.format" content="MMM dd, yyyy">
     <meta name="ajs-create-issue-metadata-show-discovery" content="false">
-    <link type="text/css" rel="stylesheet" href="./aa_files/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+    <link type="text/css" rel="stylesheet" href="{% static "aa_files/batch.css"%}" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
     <!--[if lt IE 9]>
     <link type="text/css" rel="stylesheet" href="/wiki/s/27488a6d0e9cac585dd2009c5bbf257c-CDN/zh_CN/7502/03f55dd28656fecb49cdf79d0ae052058a20a5d2/1afc6cfa7ea446facd928de92ded734d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
     <![endif]-->
     <!--[if lte IE 9]>
     <link type="text/css" rel="stylesheet" href="/wiki/s/27488a6d0e9cac585dd2009c5bbf257c-CDN/zh_CN/7502/03f55dd28656fecb49cdf79d0ae052058a20a5d2/1afc6cfa7ea446facd928de92ded734d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="./aa_files/batch(1).css" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,atl.general,page,atl.comments,-_super" data-wrm-batch-type="context" media="all">
+    <link type="text/css" rel="stylesheet" href="{% static "aa_files/batch(1).css"%}" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,atl.general,page,atl.comments,-_super" data-wrm-batch-type="context" media="all">
     <!--[if lt IE 9]>
     <link type="text/css" rel="stylesheet" href="/wiki/s/2117e6197a931fb247754fe59592aa93-CDN/zh_CN/7502/03f55dd28656fecb49cdf79d0ae052058a20a5d2/5402b6c0a77e4ac3578eec6f92860184/_/download/contextbatch/css/atl.confluence.plugins.pagetree-desktop,main,viewcontent,atl.general,page,atl.comments,-_super/batch.css?anonymous-access-enabled=true&amp;conditionalComment=lt+IE+9&amp;confluence.table.resizable=true&amp;confluence.view.edit.transition=true&amp;highlightactions=true&amp;hostenabled=true&amp;is-server-instance=true&amp;nps-acknowledged=true&amp;whisper-enabled=true" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,atl.general,page,atl.comments,-_super" data-wrm-batch-type="context" media="all">
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="./aa_files/colors.css" media="all">
-    <link type="text/css" rel="stylesheet" href="./aa_files/custom.css" media="all">
-    <script type="text/javascript" src="./aa_files/batch.js" data-wrm-key="_super" data-wrm-batch-type="context"></script>
+    <link type="text/css" rel="stylesheet" href="{% static "aa_files/colors.css"%}" media="all">
+    <link type="text/css" rel="stylesheet" href="{% static "aa_files/custom.css"%}" media="all">
+    <script type="text/javascript" src="{% static "aa_files/batch.js"%}" data-wrm-key="_super" data-wrm-batch-type="context"></script>
     <style type="text/css"></style>
     <style type="text/css"></style>
-    <script type="text/javascript" src="./aa_files/batch(2).js" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,atl.general,page,atl.comments,-_super" data-wrm-batch-type="context"></script>
+    <script type="text/javascript" src="{% static "aa_files/batch(2).js"%}" data-wrm-key="atl.confluence.plugins.pagetree-desktop,main,viewcontent,atl.general,page,atl.comments,-_super" data-wrm-batch-type="context"></script>
     <meta name="ajs-site-title" content="Tsinghua Wiki ">
     <style>.ewas-mini-box {;}</style>
     <meta name="wikilink" content="2018 Autumn FIB-LAB Group Seminar Schedule">
     <meta name="page-version" content="53">
     <meta name="ajs-page-version" content="53">
     <style type="text/css">.expandable-text-data .expandable-text-data-content {max-height: undefined}</style>
-    <script type="text/javascript" charset="utf-8" src="./aa_files/batch(3).js"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static "aa_files/batch(3).js"%}"></script>
     <style type="text/css">html, * {-moz-user-select:text!important;}</style>
-    <link rel="stylesheet" type="text/css" href="./aa_files/batch(4).css">
-    <script type="text/javascript" charset="utf-8" src="./aa_files/batch(5).js"></script>
-    <link rel="stylesheet" type="text/css" href="./aa_files/batch(6).css">
-    <script type="text/javascript" charset="utf-8" src="./aa_files/batch(7).js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "aa_files/batch(4).css"%}">
+    <script type="text/javascript" charset="utf-8" src="{% static "aa_files/batch(5).js"%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "aa_files/batch(6).css"%}">
+    <script type="text/javascript" charset="utf-8" src="{% static "aa_files/batch(7).js"%}"></script>
     <meta name="ajs-use-watch" content="false">
     <meta name="ajs-attachment-source-content-id" content="614657822">
     <meta name="ajs-use-inline-tasks" content="true">
@@ -123,11 +123,55 @@
     <meta name="ajs-show-hidden-user-macros" content="false">
     <meta name="ajs-is-admin" content="false">
     <meta name="ajs-heartbeat-interval" content="30000">
-    <link rel="stylesheet" type="text/css" href="./aa_files/batch(8).css">
-    <script type="text/javascript" charset="utf-8" src="./aa_files/batch(9).js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "aa_files/batch(8).css"%}">
+    <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet"/>
+    <link href="{% static "css/docs.min.css"%}" rel="stylesheet"/>
+    <link href="{% static "css/fancybox/jquery.fancybox.css"%}" rel="stylesheet">
+    <link href="{% static "css/flexslider.css"%}" rel="stylesheet"/>
+    <link href="{% static "css/style.css"%}" rel="stylesheet"/>
+    <link href="{% static "skins/default.css"%}" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8" src="{% static "aa_files/batch(9).js"%}"></script>
     <style type="text/css" media="print">.tableFloatingHeader{display:none !important;}.tableFloatingHeaderOriginal{position:static !important;}</style></head>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
 <body id="com-atlassian-confluence" class="theme-default  aui-layout aui-theme-default" data-aui-version="6.0.6">
+
+<header>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"
+                   style="background:url({% static "img/xbhs1.png" %}) no-repeat; background-size:160px 180px; background-position:-20px 0; height: 78px; padding-left: 110px;"
+                   href="http://fi.ee.tsinghua.edu.cn/index.html"><span>FIB LAB</span>
+                    <div>Future Communications & Internet LAB</div>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/index.html">Home</a></li>
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/research.html">Research</a></li>
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/publications.html">Publications</a></li>
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/people.html">People</a></li>
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/projects.html">Projects</a></li>
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/achieve.html">Award & Achieve</a></li>
+                    <li><a href="http://fi.ee.tsinghua.edu.cn/collaboration.html">Collaboration</a></li>
+                    <li class="active"><a href="http://fi.ee.tsinghua.edu.cn//seminar">Seminars</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</section>
 <div id="stp-licenseStatus-banner"></div>
 <fieldset class="parameters hidden">
     <input type="hidden" id="checklistsStatsUAKey" value="UA-11679828-17"></fieldset>
@@ -152,7 +196,7 @@
                         </div>
                     </div>
                     <div class="ia-secondary-container tipsy-enabled" data-tree-type="pages" data-collapsed-tooltip="子页面">
-                        <div class="ia-secondary-parent-content">
+                        <!--div class="ia-secondary-parent-content">
                             <ul class="parent ia-secondary-header-title wiki">
                                 <li class="parent-item">
                                     <a class="parent-item-link" href="http://fi.ee.tsinghua.edu.cn/seminar" title="Home">
@@ -160,7 +204,7 @@
                                         <span class="label">Home</span></a>
                                 </li>
                             </ul>
-                        </div>
+                        </div-->
                         <div class="ia-secondary-current-content">
                             {% for seminar_group in seminar_groups %}
                             <ul class="ia-secondary-currentPage-title wiki current-item">
@@ -214,8 +258,9 @@
             <div id="page-metadata-start" class="assistive"></div>
             <div id="page-metadata-end" class="assistive"></div>
             <div id="main-content" class="wiki-content">
-                <h2 id="id-2018AutumnFIBLABGroupSeminarSchedule-Time:14:00-17:00pmThursday">Time: 14:00-17:00pm Thursday</h2>
+                <h2 id="id-2018AutumnFIBLABGroupSeminarSchedule:Huan">Organizer: Huan Yan</h2>
                 <h2 id="id-2018AutumnFIBLABGroupSeminarSchedule:RohmBuilding">Location: Rohm Building, Tsinghua University</h2>
+                <h2 id="id-2018AutumnFIBLABGroupSeminarSchedule-Time:14:00-17:00pmThursday">Time: 14:00-17:00pm Thursday</h2>
                 {% for seminar_date, seminar_grp in seminars %}
                 <h2 id="id-2018AutumnFIBLABGroupSeminarSchedule:Week0">Date: {{ seminar_date }}</h2>
                 <div class="table-wrap">
@@ -256,7 +301,7 @@
                             <td class="confluenceTd">
                                 <h2>
                                     {% for file in seminar.files %}
-                                    <a href="{% url 'seminar_file' %}?id={{ file.id }}" target="_blank">{{ file.filename }}</a><br>
+                                    <a href="{% url 'seminar_file' %}?id={{ file.id }}" target="_blank">Slides</a><br>
                                     {% endfor %}
                                 </h2></td>
                         </tr>

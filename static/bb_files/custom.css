@@ -1,0 +1,13 @@
+
+code { /* forces the text not to wrap */  
+    white-space: pre-wrap!important;  
+}
+
+a#ewas-mini-wrapper{
+  left: 400px!important;
+  height: 30px!important;
+}
+
+
+
+
