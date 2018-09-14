@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import os
+import urllib
+import sys
 
 from itertools import groupby
 from operator import itemgetter
@@ -29,7 +30,7 @@ def get_file_view(request):
     else:
         response = FileResponse(open(s_file.path.path), content_type='application/octet-stream')
         response['Content-Disposition'] = 'attachment;filename="{filename}"'.format(
-            filename=s_file.filename
+            filename=urllib.quote(s_file.filename.encode(sys.getdefaultencoding()))
         )
         return response
 
