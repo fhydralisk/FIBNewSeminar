@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
 
 import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from os.path import join, dirname, abspath
 
 PROJECT_DIR = dirname(dirname(abspath(__file__)))  # 3
