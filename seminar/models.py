@@ -36,6 +36,9 @@ class Seminar(models.Model):
             ('download_private_file', "Can download private files."),
         )
 
+    def __unicode__(self):
+        return u"%s: %s" % (self.author, self.title)
+
 
 class SeminarFile(models.Model):
     seminar = models.ForeignKey(Seminar, related_name="seminar_file")
@@ -43,3 +46,6 @@ class SeminarFile(models.Model):
     path = models.FileField(upload_to=settings.SEMINAR_UPLOAD_PATH)
     download_count = models.IntegerField(default=0)
     filename = models.CharField(max_length=512, default="unknown")
+
+    def __unicode__(self):
+        return self.filename

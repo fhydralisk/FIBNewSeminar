@@ -92,7 +92,7 @@ def seminar_view(request, group=None):
         for seminar in seminars
     ]
 
-    seminar_list.sort(key=itemgetter('time'))
+    seminar_list.sort(key=itemgetter('time'), reverse=True)
     grouped_seminar_list = groupby(seminar_list, itemgetter('time'))
     grouped_seminar_list = [(time, list(group)) for time, group in grouped_seminar_list]
 
