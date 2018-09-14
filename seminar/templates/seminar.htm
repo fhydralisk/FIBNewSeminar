@@ -132,8 +132,12 @@
     <link href="{% static "skins/default.css"%}" rel="stylesheet"/>
     <script type="text/javascript" charset="utf-8" src="{% static "aa_files/batch(9).js"%}"></script>
     <style type="text/css" media="print">.tableFloatingHeader{display:none !important;}.tableFloatingHeaderOriginal{position:static !important;}</style></head>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-
+    <!-- <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> -->
+    <script type="text/javascript">
+        if ({% if login_result.succeed is not None and not login_result.succeed %} true {% else %} false {% endif %}){
+            alert("Login Failed");
+        }
+    </script>
 <body id="com-atlassian-confluence" class="theme-default  aui-layout aui-theme-default" data-aui-version="6.0.6">
 
 <header>
@@ -168,25 +172,22 @@
 </header>
 <section id="inner-headline">
     <div class="container">
-        <div class="row" align="right">
+        <div class="row">
+            <div class="login" style="float: right; padding-top: 2px; height: 13px; color: coral;">
                 <form method="post">
                 {% csrf_token %}
                 {% if not user.is_authenticated %}
-
                     <input type="text" name="username" />
                     <input type="password" name="password" />
                     <input type="hidden" name="action" value="login" />
                     <input type="submit" value="Login" />
-
                 {% else %}
-
+                    Welcome, {{ user.username }}.
                     <input type="hidden" name="action" value="logout" />
                     <input type="submit" value="Logout" />
-
                 {% endif %}
-
                 </form>
-
+            </div>
         </div>
     </div>
 </section>
