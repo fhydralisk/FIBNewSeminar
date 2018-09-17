@@ -9,6 +9,7 @@ from operator import itemgetter
 
 from django.shortcuts import render
 from django.http.response import FileResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http.request import HttpRequest
 from django.contrib.auth import authenticate, login, logout
 
 from .models import SeminarFile, SeminarGroup, Seminar
@@ -44,8 +45,11 @@ def get_file_view(request):
 
 
 def seminar_view(request, group=None):
+    # type: (HttpRequest, object) -> object
 
     login_result = {}
+    f_login = request.session.pop("failed_login", False)
+    login_result["succeed"] = not f_login
 
     if request.method == 'POST':
         action = request.POST["action"]
@@ -57,9 +61,8 @@ def seminar_view(request, group=None):
 
             if user is not None:
                 login(request, user)
-                login_result["succeed"] = True
             else:
-                login_result["succeed"] = False
+                request.session["failed_login"] = True
 
         if action == 'logout':
             logout(request)

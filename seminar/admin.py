@@ -21,7 +21,8 @@ def get_last_day_of_month(year, month):
 class SeminarFileInline(admin.TabularInline):
     model = SeminarFile
     extra = 1
-    fields = ('path', )
+    fields = ('path', 'download_count')
+    readonly_fields = ('download_count', )
 
 
 class SeminarModelAdmin(admin.ModelAdmin):
